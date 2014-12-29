@@ -1,0 +1,24 @@
+/home/chan/PhoneGap/teritory/platforms/android/ant-build/classes.dex : \
+/home/chan/PhoneGap/teritory/platforms/android/ant-build/classes/org/apache/cordova/device/Device.class \
+/home/chan/PhoneGap/teritory/platforms/android/ant-build/classes/org/apache/cordova/splashscreen/SplashScreen.class \
+/home/chan/PhoneGap/teritory/platforms/android/ant-build/classes/com/phonegap/plugins/barcodescanner/BarcodeScanner.class \
+/home/chan/PhoneGap/teritory/platforms/android/ant-build/classes/com/ionicframework/teritory334619/R$menu.class \
+/home/chan/PhoneGap/teritory/platforms/android/ant-build/classes/com/ionicframework/teritory334619/R$dimen.class \
+/home/chan/PhoneGap/teritory/platforms/android/ant-build/classes/com/ionicframework/teritory334619/R$id.class \
+/home/chan/PhoneGap/teritory/platforms/android/ant-build/classes/com/ionicframework/teritory334619/R$raw.class \
+/home/chan/PhoneGap/teritory/platforms/android/ant-build/classes/com/ionicframework/teritory334619/teritory.class \
+/home/chan/PhoneGap/teritory/platforms/android/ant-build/classes/com/ionicframework/teritory334619/R$attr.class \
+/home/chan/PhoneGap/teritory/platforms/android/ant-build/classes/com/ionicframework/teritory334619/R$drawable.class \
+/home/chan/PhoneGap/teritory/platforms/android/ant-build/classes/com/ionicframework/teritory334619/BuildConfig.class \
+/home/chan/PhoneGap/teritory/platforms/android/ant-build/classes/com/ionicframework/teritory334619/R$array.class \
+/home/chan/PhoneGap/teritory/platforms/android/ant-build/classes/com/ionicframework/teritory334619/R.class \
+/home/chan/PhoneGap/teritory/platforms/android/ant-build/classes/com/ionicframework/teritory334619/R$color.class \
+/home/chan/PhoneGap/teritory/platforms/android/ant-build/classes/com/ionicframework/teritory334619/R$string.class \
+/home/chan/PhoneGap/teritory/platforms/android/ant-build/classes/com/ionicframework/teritory334619/R$layout.class \
+/home/chan/PhoneGap/teritory/platforms/android/ant-build/classes/com/ionicframework/teritory334619/R$xml.class \
+/home/chan/PhoneGap/teritory/platforms/android/ant-build/classes/com/ionic/keyboard/IonicKeyboard$1.class \
+/home/chan/PhoneGap/teritory/platforms/android/ant-build/classes/com/ionic/keyboard/IonicKeyboard$2.class \
+/home/chan/PhoneGap/teritory/platforms/android/ant-build/classes/com/ionic/keyboard/IonicKeyboard$3.class \
+/home/chan/PhoneGap/teritory/platforms/android/ant-build/classes/com/ionic/keyboard/IonicKeyboard.class \
+/home/chan/PhoneGap/teritory/platforms/android/ant-build/dexedLibs/classes-71696ac02d47399568864b3137dee9a0.jar \
+/home/chan/PhoneGap/teritory/platforms/android/ant-build/dexedLibs/com.google.zxing.client.android.captureactivity-ba9b912abbe7e36630726e250cb2b3e6.jar \

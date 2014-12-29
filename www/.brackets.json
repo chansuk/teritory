@@ -1,0 +1,7 @@
+{
+    "jscodehints.detectedExclusions": [
+        "/home/chan/PhoneGap/teritory/www/lib/ionic/js/ionic-angular.js",
+        "/home/chan/PhoneGap/teritory/www/js/controllers.js",
+        "/home/chan/PhoneGap/teritory/www/lib/ionic/js/ionic.bundle.min.js"
+    ]
+}

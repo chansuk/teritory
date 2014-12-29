@@ -1,0 +1,24 @@
+<ion-view title="Teritory">
+  <ion-content class="padding" ng-controller="checkinCtrl">
+		<div class="list card">
+			<div class="item">
+				<h2>{{outletDat.name}}</h2>
+			</div>
+			<div class="item item-body">
+				<a class="item">
+					Starter Pack
+					<span class="badge badge-assertive">{{outletDat.sp_ava}}</span>
+				</a>
+				<a class="item">
+					Voucher
+					<span class="badge badge-assertive">{{outletDat.voucher_ava}}</span>
+				</a>
+			</div>
+			<div class="item">
+				<button class="button button-block button-positive" on-tap="actCheckIn()">
+					Check In
+				</button>
+			</div>
+		</div>
+  </ion-content>
+</ion-view>

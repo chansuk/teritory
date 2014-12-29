@@ -1,0 +1,27 @@
+<ion-view hide-nav-bar="true" class="signup-background">
+	<ion-content has-header="false" scroll="false" ng-controller="loginCtrl">
+		
+		<br><br>
+		<div class="row">
+			<div class="col">
+				<label class="item item-input">
+					<input type="text" placeholder="Username" ng-model="pUser">
+				</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<label class="item item-input">
+					<input type="password" placeholder="Password" ng-model="pPass">
+				</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<button class="button button-block button-positive" on-tap="actLogin()" >
+					Sign In
+				</button>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

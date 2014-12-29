@@ -1,0 +1,20 @@
+<ion-view title="Teritory" ng-controller="homeCtrl">
+  <ion-content>
+    <div class="list">
+			<span ng-repeat="hist in listHist">
+				<a class="item item-icon-left" href="#">
+					<i class="icon ion-location"></i>
+					<h2>{{hist.name}}</h2>
+					<p>{{hist.visit_date}}<br>{{hist.activities}}</p>
+				</a>
+			</span>
+		</div>
+  </ion-content>
+	<div class="tabs tabs-assertive tabs-icon-top">
+		<a class="tab-item" on-tap="actScanQr()">
+			<i class="icon ion-qr-scanner"></i>
+			Scan Outlet
+		</a>
+	</div>	
+</ion-view>
+
