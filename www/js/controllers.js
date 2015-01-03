@@ -4,8 +4,12 @@ app.controller('homeCtrl', function($scope,$rootScope,$ionicModal,$ionicPopup,$l
 	$rootScope.hideBack = true;
 	userLogin.validLogin();
 	$scope.listHist	= '';
+	$ionicLoading.show({
+		template: 'Loading...'
+	});
 	API.getHistCanvas().then(function(data){
-			$scope.listHist	= data;
+		$ionicLoading.hide();
+		$scope.listHist	= data;
 	});
 	
 	$scope.actScanQr = function(){
@@ -14,30 +18,38 @@ app.controller('homeCtrl', function($scope,$rootScope,$ionicModal,$ionicPopup,$l
 		});
 		
 		QRScanService.scan(function(result) {
-			if (result.cancelled) {
-				$ionicLoading.hide();
-				$ionicModal.fromTemplate('').show().then(function() {
-					$ionicPopup.alert({
-						title: 'QR Scan Cancelled',
-						template: 'You cancelled it!'
-					});
-				});
-			}else{
-				
-				var dataQr 			= JSON.parse(result.text);
-				var idOutlet		= dataQr.id;
-				//var idOutlet		= '001001003';
-				API.getDataQR(idOutlet).then(function(data){
+			if(result.text.substring(0, 5) == '{"id"'){
+				if (result.cancelled) {
 					$ionicLoading.hide();
-					if(data!='null'){
-						$rootScope.dataOutlet			= data;
-						$location.path('/checkin');
-					}else{
-						var alertPopup = $ionicPopup.alert({
-							title: 'Information!',
-							template: 'outlet is not registered!'
+					$ionicModal.fromTemplate('').show().then(function() {
+						$ionicPopup.alert({
+							title: 'QR Scan Cancelled',
+							template: 'You cancelled it!'
 						});
-					}
+					});
+				}else{
+					var dataQr 			= JSON.parse(result.text);
+					var idOutlet		= dataQr.id;
+					//var idOutlet		= '002002001';
+					API.getDataQR(idOutlet).then(function(data){
+						$ionicLoading.hide();
+						if(data=='null'){
+							var alertPopup = $ionicPopup.alert({
+								title: 'Information!',
+								template: 'outlet is not registered!'
+							});
+						}else{
+							$rootScope.dataOutlet			= data;
+							$location.path('/checkin');
+						}
+					});
+
+				}
+			}else{
+				$ionicLoading.hide();
+				$ionicPopup.alert({
+					title: 'Information!',
+					template: 'Invalid QR Code!'
 				});
 			}
 		});
@@ -87,40 +99,16 @@ app.controller('checkinCtrl', function($scope,$rootScope,$ionicPopup,$ionicLoadi
 		});
 
 		API.getDataQR(idOutlet).then(function(data){
-			if(data!=null){
+			if(data==null || data==''){
+				$ionicPopup.alert({
+					title: 'Information!',
+					template: 'Outlet is not registered!'
+				});
+				$location.path('/home');
+			}else{
 				var locVal			= data.location;
-				if(locVal!=null){
-					var nameVal			= data.name;
-					var locDet			= locVal.split(',');
-					$rootScope.qrLat 	= locDet[0];
-					$rootScope.qrLong	= locDet[1];
-
+				if(locVal==null||locVal==''){
 					
-
-					geoLoc.getCurrent().then(function(data){
-						navigator.geolocation.clearWatch(watchID);
-						if($rootScope.rangeDistance>1000){
-							$ionicLoading.hide();
-							var alertPopup = $ionicPopup.alert({
-								title: 'Information!',
-								template: 'You are not in '+nameVal+' location<br> Please check in at location!'
-							});
-							alertPopup.then(function(res) {
-								$ionicLoading.hide();
-							});
-
-						}else{
-							API.checkIn(idOutlet,notes).then(function(data){
-								$ionicLoading.hide();
-								var alertPopup = $ionicPopup.alert({
-									title: 'Information!',
-									template: data.data
-								});
-								$location.path('/home');
-							});
-						}
-					});
-				}else{
 					$ionicLoading.hide();
 					var confirmPopup = $ionicPopup.confirm({
 						 title: 'Warning',
@@ -158,13 +146,38 @@ app.controller('checkinCtrl', function($scope,$rootScope,$ionicPopup,$ionicLoadi
 
 						 }
 					 });
+					
+				}else{
+					var nameVal			= data.name;
+					var locDet			= locVal.split(',');
+					$rootScope.qrLat 	= locDet[0];
+					$rootScope.qrLong	= locDet[1];
+
+
+					geoLoc.getCurrent().then(function(data){
+						navigator.geolocation.clearWatch(watchID);
+						if($rootScope.rangeDistance>1000){
+							$ionicLoading.hide();
+							var alertPopup = $ionicPopup.alert({
+								title: 'Information!',
+								template: 'You are not in '+nameVal+' location<br> Please check in at location!'
+							});
+							alertPopup.then(function(res) {
+								$ionicLoading.hide();
+							});
+
+						}else{
+							API.checkIn(idOutlet,notes).then(function(data){
+								$ionicLoading.hide();
+								var alertPopup = $ionicPopup.alert({
+									title: 'Information!',
+									template: data.data
+								});
+								$location.path('/home');
+							});
+						}
+					});
 				}
-			}else{
-				$ionicPopup.alert({
-					title: 'Information!',
-					template: 'Outlet is not registered!'
-				});
-				$location.path('/home');
 			}
 		});
 	}
@@ -203,16 +216,13 @@ app.controller('loginCtrl', function($scope,$ionicLoading,$ionicPopup,$rootScope
 		});
 	}
 	
-	document.addEventListener("backbutton", onBackKeyDown, false);
-	function onBackKeyDown(e) {
-		e.preventDefault();
-	}
 });
 
-app.controller('mainCtrl', function($scope,userLogin) {
+app.controller('mainCtrl', function($scope,userLogin,API) {
 	//$cordovaSplashscreen.show();
 	userLogin.validLogin();
 	$scope.actLogOut = function(){
 		userLogin.logout();
 	}
+	
 });

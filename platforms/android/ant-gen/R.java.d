@@ -86,8 +86,8 @@
 /home/chan/PhoneGap/teritory/platforms/android/res/layout/share.xml \
 /home/chan/PhoneGap/teritory/platforms/android/res/layout/capture.xml \
 /home/chan/PhoneGap/teritory/platforms/android/res/layout-ldpi/capture.xml \
-/home/chan/PhoneGap/teritory/platforms/android/ant-build/res/drawable-land-xhdpi/telin.png \
 /home/chan/PhoneGap/teritory/platforms/android/ant-build/res/drawable-land-xhdpi/screen.png \
+/home/chan/PhoneGap/teritory/platforms/android/ant-build/res/drawable-land-xhdpi/screen_bak.png \
 /home/chan/PhoneGap/teritory/platforms/android/ant-build/res/drawable-xhdpi/launcher_icon.png \
 /home/chan/PhoneGap/teritory/platforms/android/ant-build/res/drawable-xhdpi/icon_bak.png \
 /home/chan/PhoneGap/teritory/platforms/android/ant-build/res/drawable-xhdpi/icon.png \
@@ -98,8 +98,8 @@
 /home/chan/PhoneGap/teritory/platforms/android/ant-build/res/drawable-land-hdpi/screen_bak.png \
 /home/chan/PhoneGap/teritory/platforms/android/ant-build/res/drawable-mdpi/icon_bak.png \
 /home/chan/PhoneGap/teritory/platforms/android/ant-build/res/drawable-mdpi/icon.png \
-/home/chan/PhoneGap/teritory/platforms/android/ant-build/res/drawable-port-xhdpi/telin.png \
 /home/chan/PhoneGap/teritory/platforms/android/ant-build/res/drawable-port-xhdpi/screen.png \
+/home/chan/PhoneGap/teritory/platforms/android/ant-build/res/drawable-port-xhdpi/screen_bak.png \
 /home/chan/PhoneGap/teritory/platforms/android/ant-build/res/drawable/shopper_icon.png \
 /home/chan/PhoneGap/teritory/platforms/android/ant-build/res/drawable/launcher_icon.png \
 /home/chan/PhoneGap/teritory/platforms/android/ant-build/res/drawable/icon_bak.png \
