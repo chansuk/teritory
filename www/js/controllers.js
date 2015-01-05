@@ -30,13 +30,14 @@ app.controller('homeCtrl', function($scope,$rootScope,$ionicModal,$ionicPopup,$l
 				}else{
 					var dataQr 			= JSON.parse(result.text);
 					var idOutlet		= dataQr.id;
+					var canvId			= window.localStorage['userData.id'];
 					//var idOutlet		= '002002001';
-					API.getDataQR(idOutlet).then(function(data){
+					API.getDataQR(idOutlet,canvId).then(function(data){
 						$ionicLoading.hide();
 						if(data=='null'){
 							var alertPopup = $ionicPopup.alert({
 								title: 'Information!',
-								template: 'outlet is not registered!'
+								template: 'outlet is not available!'
 							});
 						}else{
 							$rootScope.dataOutlet			= data;

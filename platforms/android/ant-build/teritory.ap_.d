@@ -147,6 +147,7 @@
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/plugins/com.ionic.keyboard/www/keyboard.js \
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/img/location.png \
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/img/ionic.png \
+/home/chan/PhoneGap/teritory/platforms/android/assets/www/img/logo.png \
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/lib/ionic \
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/lib/ionic/css \
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/lib/ionic/fonts \

@@ -67,9 +67,9 @@ appServ.factory('QRScanService', [function () {
 appServ.factory('API',function ($http,$rootScope,postData,$q) {
 	var result = '';
   return {
-    getDataQR: function(id) {
+    getDataQR: function(id,canvId) {
 			var deferred = $q.defer();
-			$http.get('http://106.186.19.105:8000/api/getOutlet?id='+id).
+			$http.get('http://106.186.19.105:8000/api/getOutlet?id='+id+'&canvid='+canvId).
 			success(function(data, status, headers, config) {
 				deferred.resolve(data);
 			}).error(function(data, status, headers, config) {
