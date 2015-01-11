@@ -1,0 +1,30 @@
+<ion-view title="TelinMY" ng-controller="allocationCtrl">
+	<div class="bar bar-subheader item-input-inset">
+		<label class="item-input-wrapper">
+			<i class="icon ion-ios7-search placeholder-icon"></i>
+			<input type="search" placeholder="Search" ng-model="inpSearch">
+		</label>
+		<button class="button button-clear" on-tap="actSearch()">
+			Search
+		</button>
+	</div>
+	
+	
+  <ion-content class="padding">
+		<br>
+		<br>
+		<div class="list">
+			<span ng-repeat="itemAlloc in dataAllocation">
+				<a class="item item-icon-right" on-tap="actAddAlloc(dataType,{{dataType=='sp'?'itemAlloc.msisdn':'itemAlloc.vsn'}})">
+					{{dataType=='sp'? 'MSISDN : '+ itemAlloc.msisdn:'VSN : '+itemAlloc.vsn}}
+					<i class="icon ion-plus"></i>
+				</a>
+			</span>
+		</div>
+  </ion-content>
+	<div class="tabs tabs-assertive">
+		<a class="tab-item" on-tap="actLoadMore()">
+			Load More
+		</a>
+	</div>
+</ion-view>

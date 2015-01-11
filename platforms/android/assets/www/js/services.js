@@ -113,6 +113,36 @@ appServ.factory('API',function ($http,$rootScope,postData,$q) {
 				deferred.reject(status);
 			});
 			return deferred.promise;
+		},
+		getAllocList:function(optSel,idOutlet,canvId,limit,key){
+			var deferred = $q.defer();
+			$http.get('http://106.186.19.105:8000/api/getAllocList?optSel='+optSel+'&idOutlet='+idOutlet+'&canvId='+canvId+'&limit='+limit+'&key='+key).
+			success(function(data, status, headers, config) {
+				deferred.resolve(data);
+			}).error(function(data, status, headers, config) {
+				deferred.reject(status);
+			});
+			return deferred.promise;
+		},
+		getLastCheckIn:function(idOutlet,canvId){
+			var deferred = $q.defer();
+			$http.get('http://106.186.19.105:8000/api/getLastCheckIn?idOutlet='+idOutlet+'&canvId='+canvId).
+			success(function(data, status, headers, config) {
+				deferred.resolve(data);
+			}).error(function(data, status, headers, config) {
+				deferred.reject(status);
+			});
+			return deferred.promise;
+		},
+		addStock:function(idOutlet,dataStock,dataType){
+			var deferred = $q.defer();
+			$http.get('http://106.186.19.105:8000/api/addStock?idOutlet='+idOutlet+'&dataStock='+dataStock+'&dataType='+dataType).
+			success(function(data, status, headers, config) {
+				deferred.resolve(data);
+			}).error(function(data, status, headers, config) {
+				deferred.reject(status);
+			});
+			return deferred.promise;
 		}
   };
 

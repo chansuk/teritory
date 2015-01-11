@@ -37,6 +37,11 @@ angular.module('teritory', ['ionic', 'teritory.controllers', 'teritory.services'
       url: '/login',
       templateUrl: "templates/login.html"
     })
+ 	
+ 		.state('allocation', {
+      url: '/allocation',
+      templateUrl: "templates/allocation.html"
+    })
 
   $urlRouterProvider.otherwise('/home');
 

@@ -1,8 +1,8 @@
-<ion-view title="Teritory">
+<ion-view title="TelinMY">
   <ion-content class="padding" ng-controller="checkinCtrl">
 		<div class="list card">
 			<div class="item">
-				<h2>{{outletDat.name}}</h2>
+				<h2>{{outletDat.name}} Stock</h2>
 			</div>
 			<div class="item item-body">
 				<a class="item">
@@ -17,6 +17,24 @@
 			<div class="item">
 				<button class="button button-block button-positive" on-tap="actCheckIn()">
 					Check In
+				</button>
+			</div>
+		</div>
+		
+		<div class="list card">
+			<div class="item">
+				<h2>Stock Allocation</h2>
+			</div>
+			<div class="item item-body">
+				<ion-radio ng-repeat="item in optStockList"
+                   ng-value="item.value"
+                   ng-model="data.optStock">
+          {{ item.text }}
+        </ion-radio>
+			</div>
+			<div class="item">
+				<button class="button button-block button-balanced" on-tap="actAllocate()">
+					Allocate
 				</button>
 			</div>
 		</div>

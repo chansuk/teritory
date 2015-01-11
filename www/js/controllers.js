@@ -13,6 +13,23 @@ app.controller('homeCtrl', function($scope,$rootScope,$ionicModal,$ionicPopup,$l
 	});
 	
 	$scope.actScanQr = function(){
+		
+		/*var canvId			= window.localStorage['userData.id'];
+		var idOutlet		= '001001001';
+		API.getDataQR(idOutlet,canvId).then(function(data){
+			$ionicLoading.hide();
+			if(data=='null'){
+				var alertPopup = $ionicPopup.alert({
+					title: 'Information!',
+					template: 'outlet is not available!'
+				});
+			}else{
+				$rootScope.dataOutlet			= data;
+				$location.path('/checkin');
+			}
+		});*/
+		
+		
 		$ionicLoading.show({
 			template: 'Loading...'
 		});
@@ -94,12 +111,13 @@ app.controller('checkinCtrl', function($scope,$rootScope,$ionicPopup,$ionicLoadi
 	function asignCheckIn(notes){
 		var watchID	= navigator.geolocation.watchPosition(geoLoc.onSuccess, geoLoc.onError,{ enableHighAccuracy: true });
 		var idOutlet= $rootScope.dataOutlet.id;
-					
+		var canvId	= window.localStorage['userData.id'];
+			 
 		$ionicLoading.show({
 			template: 'Loading...'
 		});
 
-		API.getDataQR(idOutlet).then(function(data){
+		API.getDataQR(idOutlet,canvId).then(function(data){
 			if(data==null || data==''){
 				$ionicPopup.alert({
 					title: 'Information!',
@@ -108,6 +126,7 @@ app.controller('checkinCtrl', function($scope,$rootScope,$ionicPopup,$ionicLoadi
 				$location.path('/home');
 			}else{
 				var locVal			= data.location;
+				//console.log(data);
 				if(locVal==null||locVal==''){
 					
 					$ionicLoading.hide();
@@ -115,6 +134,7 @@ app.controller('checkinCtrl', function($scope,$rootScope,$ionicPopup,$ionicLoadi
 						 title: 'Warning',
 						 template: 'Undefined outlet location,<br> Assign location this outlet?'
 					 });
+					
 					 confirmPopup.then(function(res) {
 						 if(res) {
 							$ionicLoading.show({template: 'Updating...'});
@@ -182,6 +202,58 @@ app.controller('checkinCtrl', function($scope,$rootScope,$ionicPopup,$ionicLoadi
 			}
 		});
 	}
+	
+	$scope.optStockList = [
+    { text: "Starter Pack", value: "sp" },
+    { text: "Voucher", value: "voucher" }
+  ];
+	
+	$scope.data = {
+    optStock: 'sp'
+  };
+	
+	$scope.actAllocate = function(){
+		var optSel	= $scope.data.optStock;
+		var idOutlet= $rootScope.dataOutlet.id;
+		var canvId	= window.localStorage['userData.id'];
+		getAllocData(optSel,idOutlet,canvId);
+	}
+	
+	function getAllocData(optSel,idOutlet,canvId){
+		$ionicLoading.show({
+			template: 'Loading...'
+		});
+		$rootScope.allocListData	= [];
+		API.getAllocList(optSel,idOutlet,canvId,10,'').then(function(data){
+			$rootScope.allocListData.optSel		= optSel;
+			$rootScope.allocListData.idOutlet	= idOutlet;
+			$rootScope.allocListData.canvId		= canvId;
+			
+			getLastCheckIn(idOutlet,canvId,data);
+		});
+	}
+	
+	function getLastCheckIn(idOutlet,canvId,allocData){
+		API.getLastCheckIn(idOutlet,canvId).then(function(data){
+			$ionicLoading.hide();
+			if(data.status){
+				if(allocData.data.length>0){
+					$rootScope.allocList = allocData;
+					$location.path('/allocation');
+				}else{
+					$ionicPopup.alert({
+						title: 'Information!',
+						template: 'Stock is not available!'
+					});
+				}
+			}else{
+				$ionicPopup.alert({
+					title: 'Information!',
+					template: data.data
+				});
+			}
+		});
+	}
 });
 
 app.controller('loginCtrl', function($scope,$ionicLoading,$ionicPopup,$rootScope,$location,userLogin,sessionData) {
@@ -225,5 +297,97 @@ app.controller('mainCtrl', function($scope,userLogin,API) {
 	$scope.actLogOut = function(){
 		userLogin.logout();
 	}
+	
+});
+
+app.controller('allocationCtrl', function($scope,$rootScope,$location,$ionicLoading,$ionicPopup,userLogin,API) {
+	$rootScope.hideBack 	= false;
+	$scope.dataAllocation = $rootScope.allocList.data;
+	$scope.dataType 			= $rootScope.allocList.type;
+	var tapLoad	= 1;
+	var limit 	= 20;
+	
+	$scope.actAddAlloc		= function(dataType,dataStock){
+		addStock(dataType,String(dataStock));
+	}
+	
+	$scope.inpSearch	= '';
+	$scope.actSearch	= function(){
+		searchList();
+	}
+	
+	$scope.actLoadMore= function(){
+		loadMore();
+	}
+	
+	function loadMore(){
+		if(limit==10) limit=20;
+		var optSel	= $rootScope.allocListData.optSel;
+		var idOutlet= $rootScope.allocListData.idOutlet;
+		var canvId	= $rootScope.allocListData.canvId;
+		var inpSearch	= $scope.inpSearch;
+		
+		$ionicLoading.show({template: 'Loading...'});
+		API.getAllocList(optSel,idOutlet,canvId,limit,inpSearch).then(function(data){
+			$ionicLoading.hide();
+			$scope.dataAllocation = data.data;
+			$scope.dataType 			= data.type;
+			limit = limit+10;
+		});
+	}
+	
+	function searchList(){
+		limit		= 10;
+		var optSel	= $rootScope.allocListData.optSel;
+		var idOutlet= $rootScope.allocListData.idOutlet;
+		var canvId	= $rootScope.allocListData.canvId;
+		var inpSearch	= $scope.inpSearch;
+		$ionicLoading.show({template: 'Loading...'});
+		API.getAllocList(optSel,idOutlet,canvId,limit,inpSearch).then(function(data){
+			$ionicLoading.hide();
+			$scope.dataAllocation = data.data;
+			$scope.dataType 			= data.type;
+		});
+
+	}
+	
+	function addStock(dataType,dataStock){
+		var outletNm			= $rootScope.dataOutlet.name;
+		var outletId			= String($rootScope.dataOutlet.id);
+		var confirmPopup 	= $ionicPopup.confirm({
+			title: 'Information',
+			template: 'Add stock into '+outletNm+' ?'
+	 	});
+					
+		confirmPopup.then(function(res) {
+			if(res){
+				$ionicLoading.show({template: 'Loading...'});
+				API.addStock(outletId,dataStock,dataType).then(function(data){
+					$ionicLoading.hide();
+					$ionicPopup.alert({
+						title: 'Information!',
+						template: data.data
+					});
+					reLoadList(10);
+				});
+			}
+		});
+		
+	}
+	
+	function reLoadList(limit){
+		limit 	= limit;
+		$ionicLoading.show({template: 'Loading...'});
+		var optSel	= $rootScope.allocListData.optSel;
+		var idOutlet= $rootScope.allocListData.idOutlet;
+		var canvId	= $rootScope.allocListData.canvId;
+		API.getAllocList(optSel,idOutlet,canvId,limit,'').then(function(data){
+			$ionicLoading.hide();
+			$scope.dataAllocation = data.data;
+			$scope.dataType 			= data.type;
+		});
+
+	}
+	
 	
 });

@@ -127,12 +127,14 @@
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/plugins \
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/index.html \
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/img \
+/home/chan/PhoneGap/teritory/platforms/android/assets/www/fonts \
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/cordova_plugins.js \
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/lib \
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/js \
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/cordova.js \
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/templates \
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/css/style.css \
+/home/chan/PhoneGap/teritory/platforms/android/assets/www/css/ionicons.css \
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/plugins/com.phonegap.plugins.barcodescanner \
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/plugins/org.apache.cordova.device \
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/plugins/org.apache.cordova.splashscreen \
@@ -148,6 +150,10 @@
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/img/location.png \
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/img/ionic.png \
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/img/logo.png \
+/home/chan/PhoneGap/teritory/platforms/android/assets/www/fonts/ionicons.eot \
+/home/chan/PhoneGap/teritory/platforms/android/assets/www/fonts/ionicons.svg \
+/home/chan/PhoneGap/teritory/platforms/android/assets/www/fonts/ionicons.ttf \
+/home/chan/PhoneGap/teritory/platforms/android/assets/www/fonts/ionicons.woff \
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/lib/ionic \
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/lib/ionic/css \
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/lib/ionic/fonts \
@@ -220,6 +226,7 @@
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/js/services.js \
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/js/app.js \
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/templates/login.html \
+/home/chan/PhoneGap/teritory/platforms/android/assets/www/templates/allocation.html \
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/templates/checkin.html \
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/templates/home.html \
 /home/chan/PhoneGap/teritory/platforms/android/ant-build/AndroidManifest.xml \
