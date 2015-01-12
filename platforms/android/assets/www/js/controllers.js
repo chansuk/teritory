@@ -1,6 +1,7 @@
 var app = angular.module('teritory.controllers', [])
 
 app.controller('homeCtrl', function($scope,$rootScope,$ionicModal,$ionicPopup,$location,$ionicLoading,QRScanService,API,userLogin) {
+	
 	$rootScope.hideBack = true;
 	userLogin.validLogin();
 	$scope.listHist	= '';
@@ -14,7 +15,8 @@ app.controller('homeCtrl', function($scope,$rootScope,$ionicModal,$ionicPopup,$l
 	
 	$scope.actScanQr = function(){
 		
-		/*var canvId			= window.localStorage['userData.id'];
+		/*
+		var canvId			= window.localStorage['userData.id'];
 		var idOutlet		= '001001001';
 		API.getDataQR(idOutlet,canvId).then(function(data){
 			$ionicLoading.hide();
@@ -54,7 +56,7 @@ app.controller('homeCtrl', function($scope,$rootScope,$ionicModal,$ionicPopup,$l
 						if(data=='null'){
 							var alertPopup = $ionicPopup.alert({
 								title: 'Information!',
-								template: 'outlet is not available!'
+								template: 'outlet is not in your area!'
 							});
 						}else{
 							$rootScope.dataOutlet			= data;
@@ -79,8 +81,19 @@ app.controller('homeCtrl', function($scope,$rootScope,$ionicModal,$ionicPopup,$l
 app.controller('checkinCtrl', function($scope,$rootScope,$ionicPopup,$ionicLoading,$location,API,geoLoc,userLogin) {
 	//userLogin.validLogin();
 	$rootScope.hideBack = false;
-  $scope.outletDat	= $rootScope.dataOutlet;
-	$scope.vActivity 	= {};
+	
+	function loadInit(){
+		$ionicLoading.show({template: 'Loading...'});
+		$scope.outletDat	= $rootScope.dataOutlet;
+		$scope.vActivity 	= {};
+		var canvId				= window.localStorage['userData.id'];
+
+		API.checkInStatus($rootScope.dataOutlet.id,canvId).then(function(data){
+			$ionicLoading.hide();
+			$scope.isChecked	= data.status;
+		});
+	}
+	loadInit();
 	$scope.actCheckIn	= function(){
 		 var myPopup = $ionicPopup.show({
 				template: '<textarea ng-model="vActivity.notes" rows="5"></textarea>',
@@ -151,7 +164,8 @@ app.controller('checkinCtrl', function($scope,$rootScope,$ionicPopup,$ionicLoadi
 												title: 'Information!',
 												template: data.data
 											});
-											$location.path('/home');
+											
+											loadInit();
 										});
 									}else{
 										var alertPopup = $ionicPopup.alert({
@@ -185,6 +199,7 @@ app.controller('checkinCtrl', function($scope,$rootScope,$ionicPopup,$ionicLoadi
 							});
 							alertPopup.then(function(res) {
 								$ionicLoading.hide();
+								$location.path('/home');
 							});
 
 						}else{
@@ -194,7 +209,7 @@ app.controller('checkinCtrl', function($scope,$rootScope,$ionicPopup,$ionicLoadi
 									title: 'Information!',
 									template: data.data
 								});
-								$location.path('/home');
+								loadInit();
 							});
 						}
 					});
@@ -256,12 +271,22 @@ app.controller('checkinCtrl', function($scope,$rootScope,$ionicPopup,$ionicLoadi
 	}
 });
 
-app.controller('loginCtrl', function($scope,$ionicLoading,$ionicPopup,$rootScope,$location,userLogin,sessionData) {
+app.controller('loginStateCtrl', function($ionicPlatform,$scope) {
+	$scope.version = '';
+	$ionicPlatform.ready(function() {
+    cordova.getAppVersion(function(version) {
+			$scope.version = 'v '+version;
+			
+		});
+	});
+});
+
+app.controller('loginCtrl', function($ionicPlatform,$scope,$ionicLoading,$ionicPopup,$rootScope,$location,userLogin,sessionData) {
 	userLogin.validLogin();
 	$scope.pPass = '';
 	$scope.pUser = '';
-
-
+	$scope.version = '';
+	
 	$scope.actLogin = function() {
 		var pPass	= $scope.pPass;
 		var pUser	= $scope.pUser;

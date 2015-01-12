@@ -27,6 +27,13 @@ module.exports = [
         "clobbers": [
             "navigator.splashscreen"
         ]
+    },
+    {
+        "file": "plugins/uk.co.whiteoctober.cordova.appversion/www/AppVersionPlugin.js",
+        "id": "uk.co.whiteoctober.cordova.appversion.AppVersionPlugin",
+        "clobbers": [
+            "cordova.getAppVersion"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -37,7 +44,8 @@ module.exports.metadata =
     "org.apache.cordova.device": "0.2.12",
     "com.phonegap.plugins.barcodescanner": "2.0.1",
     "org.apache.cordova.geolocation": "0.3.10",
-    "org.apache.cordova.splashscreen": "0.3.5"
+    "org.apache.cordova.splashscreen": "0.3.5",
+    "uk.co.whiteoctober.cordova.appversion": "0.1.5"
 }
 // BOTTOM OF METADATA
 });

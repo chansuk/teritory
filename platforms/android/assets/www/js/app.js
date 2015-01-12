@@ -1,6 +1,7 @@
+var appVersion = "1.0.1";
 angular.module('teritory', ['ionic', 'teritory.controllers', 'teritory.services'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform,$rootScope) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -8,6 +9,7 @@ angular.module('teritory', ['ionic', 'teritory.controllers', 'teritory.services'
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
+		
   });
 	
 	$ionicPlatform.registerBackButtonAction(function () {

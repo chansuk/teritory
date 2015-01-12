@@ -1,6 +1,6 @@
 <ion-view title="TelinMY">
   <ion-content class="padding" ng-controller="checkinCtrl">
-		<div class="list card">
+		<div class="list card" ng-show="!isChecked">
 			<div class="item">
 				<h2>{{outletDat.name}} Stock</h2>
 			</div>
@@ -21,7 +21,7 @@
 			</div>
 		</div>
 		
-		<div class="list card">
+		<div class="list card" ng-show="isChecked">
 			<div class="item">
 				<h2>Stock Allocation</h2>
 			</div>

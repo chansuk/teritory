@@ -1,7 +1,7 @@
-<ion-view hide-nav-bar="true" class="signup-background">
+<ion-view hide-nav-bar="true" class="signup-background" ng-controller="loginStateCtrl">
 	<ion-content has-header="false" ng-controller="loginCtrl">
 		<img style="display: block;margin-left: auto;margin-right: auto" ng-src="img/logo.png" />
-		<br>
+		
 		<div class="row">
 			<div class="col"> 
 				<label class="item item-input">
@@ -23,5 +23,9 @@
 				</button>
 			</div>
 		</div>
+		
 	</ion-content>
+	<div class="bar bar-footer">
+		<span class="button button-clear pull-right" ng-model="version"><h6 >{{version}}</h6></span>
+	</div>
 </ion-view>

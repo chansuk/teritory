@@ -138,6 +138,7 @@
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/plugins/com.phonegap.plugins.barcodescanner \
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/plugins/org.apache.cordova.device \
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/plugins/org.apache.cordova.splashscreen \
+/home/chan/PhoneGap/teritory/platforms/android/assets/www/plugins/uk.co.whiteoctober.cordova.appversion \
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/plugins/com.ionic.keyboard \
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/plugins/com.phonegap.plugins.barcodescanner/www \
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/plugins/com.phonegap.plugins.barcodescanner/www/barcodescanner.js \
@@ -145,6 +146,8 @@
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/plugins/org.apache.cordova.device/www/device.js \
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/plugins/org.apache.cordova.splashscreen/www \
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/plugins/org.apache.cordova.splashscreen/www/splashscreen.js \
+/home/chan/PhoneGap/teritory/platforms/android/assets/www/plugins/uk.co.whiteoctober.cordova.appversion/www \
+/home/chan/PhoneGap/teritory/platforms/android/assets/www/plugins/uk.co.whiteoctober.cordova.appversion/www/AppVersionPlugin.js \
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/plugins/com.ionic.keyboard/www \
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/plugins/com.ionic.keyboard/www/keyboard.js \
 /home/chan/PhoneGap/teritory/platforms/android/assets/www/img/location.png \

@@ -20,5 +20,6 @@
 /home/chan/PhoneGap/teritory/platforms/android/ant-build/classes/com/ionic/keyboard/IonicKeyboard$2.class \
 /home/chan/PhoneGap/teritory/platforms/android/ant-build/classes/com/ionic/keyboard/IonicKeyboard$3.class \
 /home/chan/PhoneGap/teritory/platforms/android/ant-build/classes/com/ionic/keyboard/IonicKeyboard.class \
+/home/chan/PhoneGap/teritory/platforms/android/ant-build/classes/uk/co/whiteoctober/cordova/AppVersion.class \
 /home/chan/PhoneGap/teritory/platforms/android/ant-build/dexedLibs/classes-71696ac02d47399568864b3137dee9a0.jar \
 /home/chan/PhoneGap/teritory/platforms/android/ant-build/dexedLibs/com.google.zxing.client.android.captureactivity-ba9b912abbe7e36630726e250cb2b3e6.jar \

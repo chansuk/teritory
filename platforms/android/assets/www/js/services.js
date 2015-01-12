@@ -143,6 +143,16 @@ appServ.factory('API',function ($http,$rootScope,postData,$q) {
 				deferred.reject(status);
 			});
 			return deferred.promise;
+		},
+		checkInStatus:function(idOutlet,canvId){
+			var deferred = $q.defer();
+			$http.get('http://106.186.19.105:8000/api/checkInStatus?idOutlet='+idOutlet+'&canvId='+canvId).
+			success(function(data, status, headers, config) {
+				deferred.resolve(data);
+			}).error(function(data, status, headers, config) {
+				deferred.reject(status);
+			});
+			return deferred.promise;
 		}
   };
 
